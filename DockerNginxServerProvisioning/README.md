@@ -15,8 +15,9 @@
         terraform init
   * Apply the changes, when running this code a prompt describes the process terraform gonna perform to the targetted API as per our code. and asks for confirmation. type **yes** for confirmation
 <br>
-        terraform apply
+          terraform apply
+    
 <br>
-  * Now the Nginx container will be running as per our code. which can be accessed from the your node's ```<Public Ip>:8000```
+  * Now the Nginx container will be running as per our code. which can be accessed from the your node's ``` "<Public Ip>":8000```
     
       
