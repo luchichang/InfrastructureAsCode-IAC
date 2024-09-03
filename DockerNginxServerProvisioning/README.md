@@ -18,6 +18,8 @@
           terraform apply
     
 <br>
-  * Now the Nginx container will be running as per our code. which can be accessed from the your node's ``` "<Public Ip>":8000```
-    
+  * Now the Nginx container will be running as per our code. which can be accessed from the your node's ``` Public Ip:8000```
+
+    _(note: if you want to change the website execute the container and inside the **/usr/share/nginx/html/index.html** replace with your code and for port changes see **/etc/nginx/nginx.conf** path)_
+              docker exec -it <container name> /bin/bash
       
