@@ -4,7 +4,7 @@
         ways to provide Authentication and Authorization for creating, managing, configuring, and deleting AWS Resources.
 
 
-## Type 1: ** Parameter in the Provider Configuration **
+## Type 1: *Parameter in the Provider Configuration*
 
    * configure the Access & Secret Access key in the Provider block in terraform 
           provider "aws" {
@@ -13,7 +13,7 @@
             secret_key = "your-secret-key"
           }
 
-## Type 2: ** Environment Varaibles **
+## Type 2: *Environment Varaibles*
 
    * Can also be provided in the environment variables
 
@@ -22,7 +22,7 @@
           % export AWS_REGION="us-west-2"
           % terraform plan
 
-## Type 3: ** Assuming IAM Role **
+## Type 3: *Assuming IAM Role*
   
    * creating an IAM Role in AWS and configuring in ** Assume role ** in provider section
 
@@ -34,7 +34,7 @@
            }
          }
 
-## Type 4: ** Shared Configuration and Credentials file
+## Type 4: *Shared Configuration and Credentials file*
 
    * storing the configuration and credentials file in the $HOME/.aws/config and $HOME/.aws/credentials  file path and mentioning it in the Provider Section.
 
