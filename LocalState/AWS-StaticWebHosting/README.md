@@ -15,4 +15,22 @@
 
 note: AWS provider is underneath a Plugin
        
-         terraform init    
+         terraform init 
+
+  * Dry running the IAC code 
+
+         terraform plan
+
+  * Applying the changes 
+
+*displays the prompt and if typed yes the Infrastructure will be created as per the code*
+
+         terraform apply
+
+*Applies the code without prompting*
+
+         terraform apply -auto-approve
+
+  * Testing the result, once terraform is applied successfully, you can verify it using
+   
+          aws s3 ls   
