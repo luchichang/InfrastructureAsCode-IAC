@@ -6,7 +6,8 @@
 
 ## Type 1: *Parameter in the Provider Configuration*
 
-   * configure the Access & Secret Access key in the Provider block in terraform 
+   * configure the Access & Secret Access key in the Provider block in terraform
+     
           provider "aws" {
             region     = "ap-south-1" #desired Region
             access_key = "your-access-key" 
