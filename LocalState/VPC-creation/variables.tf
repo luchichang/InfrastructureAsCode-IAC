@@ -17,7 +17,8 @@ variable "ec2_user_data"{
     default = <<-EOF
                #!/bin/bash
                apt update -y  &&   apt install docker.io -y
-               echo "Sangeetha123*" | docker login --username "dinesht0006" --password-stdin 
+               # append your password
+               echo "gfdfg*" | docker login --username "dinesht0006" --password-stdin 
                usermod -aG docker ubuntu
                docker run -itd -p 80:3000 dinesht0006/basic-todo-nodejs-app    
                EOF
