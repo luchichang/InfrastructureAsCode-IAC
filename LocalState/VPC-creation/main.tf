@@ -52,7 +52,7 @@ resource "aws_route_table" "todo_routetable" {
 # creating the subnet 1
 resource "aws_subnet" "todo_subnet_1" {
   vpc_id     = aws_vpc.todo_vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.subnet1_cidr_value
 
   tags = {
     Name = "todo_subnet_1"
@@ -61,7 +61,8 @@ resource "aws_subnet" "todo_subnet_1" {
 # creating the subnet 2
 resource "aws_subnet" "todo_subnet_2" {
   vpc_id     = aws_vpc.todo_vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.subnet2_cidr_value
+
 
   tags = {
     Name = "todo_subnet_2"

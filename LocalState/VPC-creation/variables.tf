@@ -1,8 +1,28 @@
 variable "cidr_block_value" {
     description = "CIDR value for vpc to assigning ipaddress"
     type = string
-    default="10.0.0.0/16"
+    default="172.28.0.0/24"
 }
+
+# Subnet CIDR Value
+variable "subnet1_cidr_value" {
+    description="cidr value for subnet1 "
+    type = string
+    default = "172.28.0.128/26"
+  
+}
+
+# Subnet 2 CIDR Value
+variable "subnet2_cidr_value" {
+    description="cidr value for subnet2 "
+    type = string
+    default = "172.28.0.192/26"
+  
+}
+
+
+
+
 
 # variable for key pair name
 variable "key_name" {
@@ -10,6 +30,11 @@ variable "key_name" {
     type = string
     default = "KeyPair19jun"
 }
+
+
+
+
+# TODO:  need to find a way to preserve hardcoding the secret
 
 variable "ec2_user_data"{
     description= "script to install and run the ec2 container"
