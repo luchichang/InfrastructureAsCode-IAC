@@ -53,6 +53,7 @@ resource "aws_route_table" "todo_routetable" {
 resource "aws_subnet" "todo_subnet_1" {
   vpc_id     = aws_vpc.todo_vpc.id
   cidr_block = var.subnet1_cidr_value
+  availability_zone = "ap-south-1a"
 
   tags = {
     Name = "todo_subnet_1"
@@ -62,8 +63,7 @@ resource "aws_subnet" "todo_subnet_1" {
 resource "aws_subnet" "todo_subnet_2" {
   vpc_id     = aws_vpc.todo_vpc.id
   cidr_block = var.subnet2_cidr_value
-
-
+  availability_zone = "ap-south-1b"
   tags = {
     Name = "todo_subnet_2"
   }
@@ -83,6 +83,47 @@ resource "aws_route_table_association" "todo_association2" {
 }
 
 
+#creating the security group
+resource "aws_security_group" "todo_app_sg" {
+    name = "todo_app_sg"
+    description = "security group for the application"
+
+    vpc_id = aws_vpc.todo_vpc.id
+
+# have to change the all port 
+    #ingress rule
+    ingress {
+        from_port = 0 
+        to_port = 65535
+        protocol = "tcp"
+        cidr_blocks  = ["0.0.0.0/0"]
+    }
+
+    ingress {
+      from_port = 80
+      to_port = 80 
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress {
+      from_port = 443
+      to_port = 443
+      protocol = "tcp"
+      cidr_blocks= ["0.0.0.0/0"]
+    }
+
+    ingress {
+      from_port = 22
+      to_port = 22
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags = {
+        Name = "app_sg" 
+    }
+}
+
 #creating the ec2 instance resource 
 resource "aws_instance" "bastion"{
   
@@ -92,6 +133,9 @@ resource "aws_instance" "bastion"{
    key_name      = var.key_name
    associate_public_ip_address = true  # Assigns a public IP
    user_data = var.ec2_user_data
+   # Attach the security group here
+   vpc_security_group_ids = [aws_security_group.todo_app_sg.id]
+
 
 
    tags = {
